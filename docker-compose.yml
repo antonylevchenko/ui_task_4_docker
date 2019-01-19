@@ -1,0 +1,30 @@
+version: "3"
+services:
+
+  apache2php:
+    image: antonylevchenko/ui_task_4:apache-php
+    ports:
+      - "8080:8080"
+    volumes:
+      - "C:/Users/anton.levchenko/Projects/University/ui/UI_task_4_docker"
+
+  mynginx:
+    image: antonylevchenko/ui_task_4:nginx
+    ports:
+      - "80:80"
+    volumes:
+      - "C:/Users/anton.levchenko/Projects/University/ui/UI_task_4_docker"
+      
+  mymysql:
+    image: antonylevchenko/ui_task_4:mysql
+    ports: 
+      - "3306:3306"
+
+  mysql-admin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: mymysql
+      PMA_USER: user1
+      PMA_PASSWORD: pass1
